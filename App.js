@@ -1,23 +1,27 @@
-
 import React from 'react';
-import {Text} from 'react-native';
+
 import styled from 'styled-components';
 
-const Texto = styled.Text`
-  font-size: 30px
-  color: #00ffff;
-`;
 const Pagina = styled.SafeAreaView`
-  background-color: yellow;
   flex: 1;
+  justify-content: space-around;
+  flex-direction: column;
+
 `;
+
+const Quadrado = styled.View`
+  height: 50px;
+  width: 50px;
+  background-color: ${(props) => props.cor};
+`;
+
 export default () => {
   
   return (
     <Pagina>
-      <Text>Ola Mundo I</Text>
-      <Text>Ola Mundo II</Text>
-      <Texto>Ola Mundo Novo</Texto>
+      <Quadrado cor="red" />
+      <Quadrado cor="yellow" />
+      <Quadrado cor="green" />
     </Pagina>
   );
 };
