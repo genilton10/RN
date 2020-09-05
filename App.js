@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {TextInput, Text } from 'react-native';
+import {TextInput, Text, Button } from 'react-native';
 
 const Pagina = styled.SafeAreaView`
   flex: 1;
@@ -18,15 +18,21 @@ const Input = styled.TextInput`
 export default () => {
 
   const [frase, alteraFrase ] = useState('Frase inicial');
+  const [visivel, alteraVisibilidade] = useState(false);
 
   const alteraInput = (texto) => {
     alteraFrase(texto);
   };
 
+  const visibilidade = () =>{
+    alteraVisibilidade(!visivel);
+  }
+
   return (
     <Pagina>
       <Input value={frase} onChangeText={alteraInput} />
-      <Text>Frase do input:{frase}</Text>
+      <Button title="Mostrar frase" onPress={visibilidade} />
+      {visivel && <Text>Frase do input:{frase}</Text>}
     </Pagina>
   );
 };
