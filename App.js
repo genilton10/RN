@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {Text, Button} from 'react-native';
+import {TextInput, Text } from 'react-native';
 
 const Pagina = styled.SafeAreaView`
   flex: 1;
@@ -9,23 +9,24 @@ const Pagina = styled.SafeAreaView`
   align-items: center;
 `;
 
-const Paragrafo = (props) => {
-  return <Text>{props.frase}</Text>;
-};
-  
-export default () => {
-  const [valor, alteraValor] = useState(4);
+const Input = styled.TextInput`
+  width: 200px;
+  height: 50px;
+  border: 1px solid #000;
+`
 
-  const incrementar = () =>{
-      alteraValor(valor+1);
-  };  
+export default () => {
+
+  const [frase, alteraFrase ] = useState('Frase inicial');
+
+  const alteraInput = (texto) => {
+    alteraFrase(texto);
+  };
+
   return (
     <Pagina>
-      <Text>{valor}</Text>
-      <Text>{valor}</Text>
-      <Button title="Incrementar" onPress={incrementar} />
-      <Paragrafo frase="Frase passada por props"/>
-      <Paragrafo frase="nova frase"/>
+      <Input value={frase} onChangeText={alteraInput} />
+      <Text>Frase do input:{frase}</Text>
     </Pagina>
   );
 };
